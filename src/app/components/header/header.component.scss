@@ -1,0 +1,108 @@
+@mixin responsive($w) {
+  @if ($w == 350) {
+    @media (max-width: 1300px) {
+      @content;
+    }
+  } @else if ($w == 450) {
+    @media (min-width: 371px) and (max-width: 1300px) {
+      @content;
+    }
+  } @else if ($w == 650) {
+    @media (min-width: 577px) and (max-width: 1300px) {
+      @content;
+    }
+  } @else if ($w == 850) {
+    @media (min-width: 769px) and (max-width: 1300px) {
+      @content;
+    }
+  } @else if ($w == 1050) {
+    @media (min-width: 992px) and (max-width: 1300px) {
+      @content;
+    }
+  } @else if ($w == 1250) {
+    @media (min-width: 1181px) and (max-width: 1300px) {
+      @content;
+    }
+  }
+}
+header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #17171e;
+  .bg-img {
+    position: absolute;
+    right: 0;
+  }
+  .wave-img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    position: relative;
+    z-index: 10;
+    .img {
+      height: 250px;
+      width: 300px;
+    }
+    .text {
+      color: #fff;
+      text-align: center;
+      h1 {
+        font-size: 60px;
+        @include responsive(350) {
+          font-size: 40px;
+        }
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        span {
+          color: #f69f24;
+        }
+      }
+      h4 {
+        color: #bdbdbd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        &::before,
+        &::after {
+          content: '';
+          width: 80px;
+          height: 3px;
+          background: #ff9d00;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 15px 40px;
+      border: 2px solid #7a4d00;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ffad24, #ff9100);
+      color: #171717;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition-duration: 0.8s;
+      &:hover {
+        background: linear-gradient(135deg, #ffbd45, #ffa000);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 153, 0, 0.3);
+      }
+    }
+  }
+}

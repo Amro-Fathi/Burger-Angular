@@ -1,0 +1,123 @@
+@use '../../../styles/index' as *;
+
+.menu {
+  position: relative;
+  padding: 40px 0;
+  background:
+    radial-gradient(ellipse at 10% 15%, rgba(255, 140, 0, 0.1), transparent 35%),
+    radial-gradient(ellipse at 90% 85%, rgba(255, 100, 0, 0.08), transparent 40%),
+    linear-gradient(135deg, #1c1413, #241918, #1b1413);
+
+  .wave {
+    @include position($t: 0, $l: 0);
+    transform: rotateX(180deg);
+    width: 30%;
+  }
+  .title {
+    text-align: center;
+    color: #fff;
+
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    span {
+      color: #ff9800;
+    }
+
+    p {
+      margin-top: 12px;
+      color: #b9aaa3;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 75px;
+      height: 4px;
+      margin: 22px auto 0;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ffb52e, #ff8500);
+      box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
+    }
+  }
+  .item {
+    padding: 12px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #302321, #241818);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+    transition-duration: 0.7s;
+    @include responsive(350) {
+     margin: auto;
+        max-width: 280px;
+    }
+    @include responsive(850) {
+        max-width: initial;
+    }
+    &:hover {
+      transform: translateY(-7px);
+      border-color: #ff9800;
+      box-shadow: 0 15px 35px rgba(255, 152, 0, 0.12);
+
+      .img img {
+        transform: scale(1.08);
+      }
+    }
+
+    .content {
+      @include flex();
+      @include responsive(350) {
+        flex-direction: column;
+      }
+      gap: 22px;
+
+      .img {
+        width: 48%;
+        @include responsive(350) {
+          width: 100%;
+        }
+        overflow: hidden;
+        border-radius: 17px;
+
+        img {
+          transition-duration: 0.7s;
+        }
+      }
+
+      .right {
+        h5 {
+          color: #fff;
+          font-size: 23px;
+          font-weight: 750;
+          margin-bottom: 22px;
+        }
+
+        ul {
+          @include flex();
+          padding: 0;
+          list-style: none;
+          width: 100%;
+          flex-wrap: wrap;
+          li {
+            @include flex();
+            gap: 8px;
+            color: #d6ceca;
+            font-size: 14px;
+            width: 50%;
+            &::before {
+              content: '';
+              width: 7px;
+              height: 7px;
+              border-radius: 50%;
+              background: #ff9800;
+              box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
